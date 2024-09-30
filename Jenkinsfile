@@ -7,7 +7,7 @@ pipeline {
         AWS_ACCOUNT_ID = credentials('ACCOUNT_ID')
         AWS_ECR_REPO_NAME = credentials('ECR_REPO_QUEUE')
         AWS_DEFAULT_REGION = 'us-east-1'
-        ORGANIZATION_NAME = "fleetman-k8s-ci"
+        ORGANIZATION_NAME = "darshantech5"
         SERVICE_NAME = "fleetman-queue"
             
         REPOSITORY_TAG = "${ORGANIZATION_NAME}-${SERVICE_NAME}:${BUILD_ID}"
@@ -88,13 +88,13 @@ pipeline {
         stage('Update Deployment file') {
             environment {
                 GIT_REPO_NAME = "fleetman-queue"
-                GIT_ORG_NAME = "fleetman-k8s-ci"
+                GIT_ORG_NAME = "darshantech5"
             }
             steps {
                 withCredentials([string(credentialsId: 'github', variable: 'GITHUB_TOKEN')]) {
                     sh '''
-                        git config user.email "deepaktyagi048@gmail.com"
-                        git config user.name "deeepak-tyagii"
+                        git config user.email "darshansathish5@gmail.com"
+                        git config user.name "DarshanS007"
                         BUILD_NUMBER=${BUILD_NUMBER}
                         echo $BUILD_NUMBER
                         imageTag=$(grep -oP '(?<=fleetman-queue:)[^ ]+' deploy.yaml)
